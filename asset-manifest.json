@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.abcd4c0c.css",
-    "main.js": "/portfolio/static/js/main.79c92098.js",
+    "main.css": "/portfolio/static/css/main.844b71a1.css",
+    "main.js": "/portfolio/static/js/main.1cbdd4a2.js",
     "static/js/453.b4d67a8b.chunk.js": "/portfolio/static/js/453.b4d67a8b.chunk.js",
     "static/media/tour-management.png": "/portfolio/static/media/tour-management.8fad07d8893ef671a9d3.png",
     "static/media/lab-mangement.png": "/portfolio/static/media/lab-mangement.044bccab27c84433c90c.png",
+    "static/media/plugin-2.jpg": "/portfolio/static/media/plugin-2.8629caea4b6dd497a1c5.jpg",
     "static/media/image-one.png": "/portfolio/static/media/image-one.56f4f1f9921a6d3e27f3.png",
+    "static/media/plugin.jpg": "/portfolio/static/media/plugin.e419b796a867e0afe612.jpg",
     "static/media/image-three.png": "/portfolio/static/media/image-three.d1d9a25ecbfc1ad0ec8b.png",
     "static/media/image-two.png": "/portfolio/static/media/image-two.b450bd007ca7c874e7d0.png",
     "static/media/multi-vendor-project.jpg": "/portfolio/static/media/multi-vendor-project.b34e689305937b5e6b0e.jpg",
     "static/media/wordpress.png": "/portfolio/static/media/wordpress.da821a8dfa77f7178dbf.png",
     "index.html": "/portfolio/index.html",
-    "main.abcd4c0c.css.map": "/portfolio/static/css/main.abcd4c0c.css.map",
-    "main.79c92098.js.map": "/portfolio/static/js/main.79c92098.js.map",
+    "main.844b71a1.css.map": "/portfolio/static/css/main.844b71a1.css.map",
+    "main.1cbdd4a2.js.map": "/portfolio/static/js/main.1cbdd4a2.js.map",
     "453.b4d67a8b.chunk.js.map": "/portfolio/static/js/453.b4d67a8b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.abcd4c0c.css",
-    "static/js/main.79c92098.js"
+    "static/css/main.844b71a1.css",
+    "static/js/main.1cbdd4a2.js"
   ]
 }
