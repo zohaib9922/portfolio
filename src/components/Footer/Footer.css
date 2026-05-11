@@ -12,7 +12,6 @@
   font-family: 'Inter', sans-serif;
   position: relative;
   overflow: hidden;
-  border-radius: 25px 25px 0 0;
 }
 
 /* ===================== CONTENT ===================== */
@@ -110,6 +109,10 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.phone-icon svg{
+  transform: rotate(90deg);
 }
 
 /* ===================== RESPONSIVE ===================== */

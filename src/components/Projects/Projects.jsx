@@ -4,6 +4,8 @@ import labProject from "../../assets//projects/lab-mangement.png";
 import TourProject from "../../assets//projects/tour-management.png";
 import MultiVendor from "../../assets//projects/multi-vendor-project.jpg";
 import WordPress from "../../assets//projects/wordpress.png";
+import plugin from "../../assets//projects/plugin.jpg";
+import plugintwo from "../../assets//projects/plugin-2.jpg";
 
 const projects = [
   {
@@ -13,6 +15,7 @@ const projects = [
       "A high-performance personal portfolio built with React, smooth animations, glassmorphism UI, and fully responsive layouts. Designed to showcase skills, projects, and professional experience.",
     image: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546",
     tech: ["React", "CSS", "Framer Motion"],
+    link: "https://github.com/zohaib9922/portfolio",
   },
   {
     title: "E-Commerce Platform",
@@ -21,6 +24,17 @@ const projects = [
       "A complete e-commerce solution with product listings, cart, checkout, authentication, and admin dashboard. Focused on performance, scalability, and clean UI.",
     image: "https://images.unsplash.com/photo-1519337265831-281ec6cc8514",
     tech: ["React", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Smart Reading Progress – WordPress Reading Progress Plugin",
+    short: "Lightweight reading progress bar for WordPress",
+    description: [
+      "Developed a lightweight WordPress plugin that adds a smart reading progress indicator to improve user engagement and reading experience on blog posts and long-form content.",
+      "Built with clean PHP, JavaScript, and WordPress hooks, featuring customizable progress tracking, responsive behavior, and optimized frontend performance with minimal resource usage."
+    ],
+    image: plugin,
+    tech: ["WordPress", "PHP", "JavaScript", "CSS", "Plugin Development"],
+    link: "https://github.com/zohaib9922/smart-reading-progress",
   },
   {
     title: "SaaS Dashboard",
@@ -60,6 +74,7 @@ const projects = [
       "Built a complete tour booking and management platform enabling customers to browse, book, and manage travel packages.",
       "Developed with Laravel backend and Vue.js SPA frontend for seamless user experience and efficient booking workflows."
     ],
+    link: "https://github.com/zohaib9922/tour-booking-api",
     image: TourProject,
     tech: ["Laravel", "Vue.js", "MySQL", "Stripe", "RESTful APIs"],
   },
@@ -82,6 +97,28 @@ const projects = [
     ],
     image: WordPress,
     tech: ["WordPress", "PHP", "MySQL", "Custom Theme Development"],
+  },
+  {
+    title: "Live Visitor Counter – Real-Time Website Analytics Plugin",
+    short: "Real-time visitor tracking for websites",
+    description: [
+      "Developed a lightweight live visitor counter plugin that tracks and displays real-time website visitors, helping website owners monitor engagement and traffic activity instantly.",
+      "Built using PHP, JavaScript, and AJAX-based updates for smooth real-time counting, optimized performance, and seamless integration with WordPress websites and custom web applications."
+    ],
+    image: plugintwo,
+    tech: ["WordPress", "PHP", "JavaScript", "AJAX", "MySQL"],
+    link: "https://github.com/zohaib9922/live-visitor-counter",
+  },
+  {
+    title: "Advanced Visitor Analytics – Real-Time Website Traffic Insights",
+    short: "Comprehensive visitor analytics and tracking system",
+    description: [
+      "Developed an advanced visitor analytics solution that tracks real-time website traffic, visitor behavior, page views, and engagement metrics through an intuitive analytics dashboard.",
+      "Built with PHP, JavaScript, AJAX, and MySQL, featuring live traffic monitoring, session tracking, device and browser analytics, and performance-optimized data processing for WordPress and custom web applications."
+    ],
+    image: plugin,
+    tech: ["WordPress", "PHP", "JavaScript", "AJAX", "MySQL", "Analytics Dashboard"],
+    link: "https://github.com/zohaib9922/advanced-visitor-analytics",
   }
 ];
 
@@ -132,6 +169,16 @@ const Projects = () => {
             <div className="project-overlay">
               <h3>{project.title}</h3>
               <p>{project.short}</p>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link-btn"
+                >
+                  🚀 View Code <span style={{ fontSize: "16px" }}>→</span>
+                </a>
+              )}
             </div>
           </div>
         ))}
@@ -151,17 +198,32 @@ const Projects = () => {
             <img src={activeProject.image} alt={activeProject.title} />
 
             <h3>{activeProject.title}</h3>
-            <p>
+
+            <div className="project-description">
               {Array.isArray(activeProject.description)
-                ? activeProject.description.map((d, i) => <p key={i}>{d}</p>)
-                : activeProject.description}
-            </p>
+                ? activeProject.description.map((d, i) => (
+                    <p key={i}>{d}</p>
+                  ))
+                : <p>{activeProject.description}</p>}
+            </div>
 
             <div className="tech-stack">
               {activeProject.tech.map((tech, i) => (
                 <span key={i}>{tech}</span>
               ))}
             </div>
+
+            {activeProject.link && (
+              <a
+                href={activeProject.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link-btn modal-btn"
+              >
+                🚀 View Code <span>→</span>
+              </a>
+            )}
+
           </div>
         </div>
       )}

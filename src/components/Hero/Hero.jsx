@@ -64,9 +64,11 @@ export default function Hero({ darkMode, setDarkMode }) {
   }, []);
 
   useEffect(() => {
+    const hero = document.querySelector(".hero");
     const dot = document.querySelector(".cursor-dot");
     const ring = document.querySelector(".cursor-ring");
-    if (!dot || !ring) return;
+
+    if (!hero || !dot || !ring) return;
 
     let mouseX = 0;
     let mouseY = 0;
@@ -74,8 +76,10 @@ export default function Hero({ darkMode, setDarkMode }) {
     let ringY = 0;
 
     const moveCursor = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      const rect = hero.getBoundingClientRect();
+
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
 
       dot.style.left = `${mouseX}px`;
       dot.style.top = `${mouseY}px`;
@@ -91,13 +95,14 @@ export default function Hero({ darkMode, setDarkMode }) {
       requestAnimationFrame(animateRing);
     };
 
-    window.addEventListener("mousemove", moveCursor);
+    hero.addEventListener("mousemove", moveCursor);
     animateRing();
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
+      hero.removeEventListener("mousemove", moveCursor);
     };
   }, []);
+
 
 
   return (

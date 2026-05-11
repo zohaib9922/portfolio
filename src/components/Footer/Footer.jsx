@@ -26,7 +26,7 @@ const Footer = () => {
           <div className="footer-contact">
             <h4>Contact Me</h4>
             <p><FaEnvelope /><a href="mailto:hzuhaib57@gmail.com"> hzuhaib57@gmail.com</a></p>
-            <p><FaPhone /><a href="tel:+923114277133"> +92 311 4277133</a></p>
+            <p className="phone-icon"><FaPhone /><a href="tel:+923114277133"> +92 311 4277133</a></p>
           </div>
 
           <div className="footer-social">
