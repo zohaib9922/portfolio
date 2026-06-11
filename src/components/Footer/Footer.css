@@ -1,124 +1,294 @@
-:root {
-  --footer-gradient: radial-gradient(circle at top right, #3c4cb8, #0b1537);
-  --footer-text: #fff;
-  --footer-muted: rgba(255,255,255,0.7);
-  --footer-accent: #f0f;
-}
-
-.footer-section {
-  padding: 80px 8%;
-  background: var(--footer-gradient);
-  color: var(--footer-text);
-  font-family: 'Inter', sans-serif;
+/* ============================================================
+   FOOTER — ab2 design tokens
+   ============================================================ */
+.ftr-section {
   position: relative;
   overflow: hidden;
+  padding: 72px 52px 0;
+  background: #080919;
+  font-family: "Geist", "DM Sans", sans-serif;
+
+  --violet:      #7c6df0;
+  --violet-hi:   #b8b0ff;
+  --violet-lo:   rgba(124, 109, 240, 0.14);
+  --violet-edge: rgba(184, 176, 255, 0.28);
+  --cyan:        #22d3c8;
+  --surf-1:      rgba(255, 255, 255, 0.04);
+  --surf-2:      rgba(255, 255, 255, 0.07);
+  --edge-1:      rgba(255, 255, 255, 0.08);
+  --edge-2:      rgba(255, 255, 255, 0.13);
+  --txt-1:       #f0f0ff;
+  --txt-2:       rgba(210, 212, 255, 0.72);
+  --txt-3:       rgba(190, 193, 255, 0.42);
+  --spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth:      cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===================== CONTENT ===================== */
-.footer-container {
+/* Subtle grid */
+.ftr-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top glow line */
+.ftr-glow-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--violet-edge), transparent);
+  z-index: 1;
+}
+
+.ftr-container {
+  position: relative;
+  z-index: 5;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.footer-top {
+/* ── Top grid ── */
+.ftr-top {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap: 40px;
-  margin-bottom: 50px;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid var(--edge-1);
 }
 
-.footer-brand h3 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+/* ── Brand ── */
+.ftr-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--txt-1);
+  background: var(--violet-lo);
+  border: 1px solid var(--violet-edge);
+  border-radius: 10px;
+  padding: 6px 14px;
+  margin-bottom: 14px;
+  width: fit-content;
+  letter-spacing: -0.5px;
 }
 
-.footer-brand p {
-  color: var(--footer-muted);
-  font-size: 0.95rem;
+.ftr-logo-bracket {
+  color: var(--violet-hi);
+  font-weight: 400;
 }
 
-.footer-links h4,
-.footer-contact h4,
-.footer-social h4 {
-  margin-bottom: 15px;
-  color: rgba(255,255,255,0.9);
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
+.ftr-brand-name {
+  font-family: "Syne", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--txt-1);
+  letter-spacing: -0.5px;
+  margin: 0 0 4px;
 }
 
-.footer-contact a{
-  color: #fff;
-  text-decoration: none;
+.ftr-brand-role {
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--violet-hi);
+  margin: 0 0 14px;
 }
 
-.footer-links ul {
+.ftr-brand-bio {
+  font-size: 13px;
+  color: var(--txt-3);
+  line-height: 1.75;
+  max-width: 240px;
+  margin: 0;
+}
+
+/* ── Column label ── */
+.ftr-col-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--txt-3);
+  margin: 0 0 18px;
+}
+
+/* ── Nav links ── */
+.ftr-nav {
   list-style: none;
   padding: 0;
-}
-
-.footer-links ul li {
-  margin-bottom: 10px;
-}
-
-.footer-links ul li a {
-  text-decoration: none;
-  color: var(--footer-text);
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.footer-links ul li a:hover {
-  color: #fff;
-  transform: translateX(5px);
-}
-
-.footer-contact p {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--footer-text);
-  opacity: 0.85;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.footer-social .social-links {
-  display: flex;
-  gap: 15px;
-}
-
-.footer-social .social-links a {
-  font-size: 26px;
-  color: var(--footer-text);
-  transition: all 0.3s ease;
-}
-
-.footer-social .social-links a:hover {
-  color: #fff;
-  transform: scale(1.2);
-}
-
-/* ===================== BOTTOM ===================== */
-.footer-bottom {
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.2);
-  padding-top: 20px;
-  color: var(--footer-text);
-  opacity: 0.8;
-  font-size: 0.85rem;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
-.phone-icon svg{
-  transform: rotate(90deg);
+.ftr-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--txt-2);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s var(--spring);
 }
 
-/* ===================== RESPONSIVE ===================== */
-@media(max-width:768px){
-  .footer-top {
+.ftr-nav-arrow {
+  font-size: 12px;
+  color: var(--txt-3);
+  transition: color 0.2s ease, transform 0.2s var(--spring);
+}
+
+.ftr-nav-link:hover {
+  color: var(--txt-1);
+  gap: 11px;
+}
+
+.ftr-nav-link:hover .ftr-nav-arrow {
+  color: var(--violet-hi);
+  transform: translateX(2px);
+}
+
+/* ── Contact ── */
+.ftr-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ftr-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--txt-2);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.ftr-contact-item:hover {
+  color: var(--violet-hi);
+}
+
+.ftr-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--surf-1);
+  border: 1px solid var(--edge-1);
+  color: var(--violet-hi);
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.ftr-contact-item:hover .ftr-contact-icon {
+  background: var(--violet-lo);
+  border-color: var(--violet-edge);
+}
+
+/* ── Social ── */
+.ftr-social {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ftr-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  background: var(--surf-1);
+  border: 1px solid var(--edge-1);
+  color: var(--txt-2);
+  font-size: 13px;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  width: fit-content;
+}
+
+.ftr-social-link svg {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.ftr-social-link:hover {
+  background: var(--violet-lo);
+  border-color: var(--violet-edge);
+  color: var(--violet-hi);
+}
+
+/* ── Bottom bar ── */
+.ftr-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 24px;
+  gap: 12px;
+}
+
+.ftr-copy {
+  font-size: 12px;
+  color: var(--txt-3);
+  margin: 0;
+}
+
+.ftr-made {
+  font-size: 12px;
+  color: var(--txt-3);
+  margin: 0;
+}
+
+.ftr-made::before {
+  content: "✦ ";
+  color: var(--violet-hi);
+  font-size: 10px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .ftr-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ftr-section {
+    padding: 56px 22px 0;
+  }
+
+  .ftr-top {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 32px;
+    padding-bottom: 36px;
+  }
+
+  .ftr-brand-bio {
+    max-width: 100%;
+  }
+
+  .ftr-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+    padding: 16px 0 20px;
   }
 }

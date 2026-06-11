@@ -1,169 +1,308 @@
-:root {
-  --bg-color: #0b0f1a;
-  --text-color: #fff;
-  --muted-color: rgba(255,255,255,0.7);
-  --card-bg: #111827;
-  --highlight: #6b9eff;
+/* ============================================================
+   SKILLS — ab2 design tokens
+   ============================================================ */
+.sk-section {
+  position: relative;
+  overflow: hidden;
+  padding: 96px 52px 88px;
+  background: #080919;
+  font-family: "Geist", "DM Sans", sans-serif;
+
+  --violet:      #7c6df0;
+  --violet-hi:   #b8b0ff;
+  --violet-lo:   rgba(124, 109, 240, 0.14);
+  --violet-edge: rgba(184, 176, 255, 0.28);
+  --cyan:        #22d3c8;
+  --cyan-lo:     rgba(34, 211, 200, 0.10);
+  --surf-1:      rgba(255, 255, 255, 0.04);
+  --surf-2:      rgba(255, 255, 255, 0.07);
+  --edge-1:      rgba(255, 255, 255, 0.08);
+  --edge-2:      rgba(255, 255, 255, 0.13);
+  --txt-1:       #f0f0ff;
+  --txt-2:       rgba(210, 212, 255, 0.72);
+  --txt-3:       rgba(190, 193, 255, 0.42);
+  --spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth:      cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body.light {
-  --bg-color: #f7f9fc;
-  --text-color: #0f172a;
-  --muted-color: rgba(15,23,42,0.7);
-  --card-bg: #fff;
-}
-
-/* ===================== BACKGROUND SYNTAX ===================== */
-.syntax-bg {
+/* ambient glow */
+.sk-section::before {
+  content: "";
   position: absolute;
-  top:0; left:0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 15% 20%, rgba(124, 109, 240, 0.11) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 35% at 85% 75%, rgba(34, 211, 200, 0.07)  0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* grid */
+.sk-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Floating code snippets ── */
+.sk-syntax-bg {
+  position: absolute;
+  inset: 0;
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
 }
 
-.syntax-bg span {
+.sk-snippet {
   position: absolute;
-  top: var(--y);
-  left: var(--x);
-  font-size: var(--size);
-  color: rgba(255,255,255,var(--opacity));
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 11px;
+  color: rgba(184, 176, 255, 0.09);
   white-space: nowrap;
-  animation: floatSyntax var(--duration) linear infinite;
-  animation-delay: var(--delay);
-  font-family: 'Fira Code', monospace;
-  will-change: transform, opacity;
+  animation: skFloat calc(18s + calc(var(--si, 0) * 2.1s)) linear infinite;
+  animation-delay: calc(var(--si, 0) * -1.4s);
+  left: calc((var(--si, 0) * 8.3%) + 2%);
+  top: 110%;
+  letter-spacing: 0.3px;
 }
 
-@keyframes floatSyntax {
-  0% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0; }
-  10% { opacity: 0.3; }
-  50% { transform: translateY(-400px) rotate(180deg) scale(1.05); opacity: 0.7; }
-  100% { transform: translateY(-800px) rotate(360deg) scale(1); opacity: 0; }
+@keyframes skFloat {
+  from { transform: translateY(0); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 0.6; }
+  to   { transform: translateY(-120vh); opacity: 0; }
 }
 
-/* ===================== SECTION ===================== */
-.skills-section {
+/* ── Inner ── */
+.sk-inner {
   position: relative;
-  padding: 120px 5%;
-  background: var(--bg-color);
-  color: var(--text-color);
-  overflow: hidden;
-  font-family: 'Inter', sans-serif;
-}
-
-.skills-header {
-  position: relative;
-  z-index: 10;
+  z-index: 5;
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+}
+
+/* ── Header ── */
+.sk-header {
+  margin-bottom: 56px;
+}
+
+.sk-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--violet-lo);
+  border: 1px solid var(--violet-edge);
+  border-radius: 7px;
+  padding: 5px 13px 5px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--violet-hi);
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  width: fit-content;
+  margin-bottom: 18px;
+}
+
+.eyebrow-line {
+  width: 15px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--violet), var(--violet-hi));
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.sk-title {
   display: flex;
-  flex-direction: column;
-  gap: 40px; /* Reverted spacing to simple */
-}
-
-/* ===================== TITLE & DESCRIPTION ===================== */
-.skills-text .subtitle {
-  font-size: 1.1rem;
-  color: var(--muted-color);
-  letter-spacing: 1px;
-}
-
-.skills-text h2 {
-  font-size: 2.4rem;
-  margin: 10px 0 15px;
-  font-weight: 600; /* reverted lighter weight */
-}
-
-.skills-text p {
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-  color: var(--muted-color);
-  font-weight: 400;
-}
-
-/* ===================== ICON CARDS ===================== */
-.skills-icons {
-  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: baseline;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 800;
+  letter-spacing: -2.5px;
+  line-height: 1;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  margin: 0 0 16px;
+}
+
+.sk-t-solid  { color: var(--txt-1); }
+.sk-t-stroke {
+  -webkit-text-stroke: 2px rgba(184, 176, 255, 0.60);
+  color: transparent;
+}
+.sk-t-faint  { color: var(--txt-3); }
+
+.sk-subtitle {
+  font-size: 14px;
+  color: var(--txt-2);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ── Skills grid ── */
+.sk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+/* ── Skill card ── */
+.sk-card {
   position: relative;
-  z-index: 10;
-}
-
-.icon-card {
-  width: 160px;
-  height: 160px;
-  background: linear-gradient(145deg,#111827,#1a2035);
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-color);
-  text-align: center;
-  transform-style: preserve-3d;
-  perspective: 800px;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.4s ease;
-}
-
-.icon-card span {
-  margin-top: 12px;
-  font-size: 1rem;
-  font-weight: 500;
-  display: block;
-}
-
-.icon-card .icon-inner {
+  overflow: hidden;
+  background: var(--surf-1);
+  border: 1px solid var(--edge-1);
+  border-radius: 16px;
+  padding: 28px 18px 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s ease;
-  padding: 10px;
-  border-radius: 12px;
+  gap: 10px;
+  cursor: default;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.45s var(--smooth),
+    transform 0.45s var(--smooth),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  transition-delay: calc(var(--i, 0) * 0.055s);
 }
 
-.icon-card .icon-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  color: var(--icon-color);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-/* Hover 3D effect */
-.icon-card:hover {
-  transform: translateY(-10px) rotateY(15deg) rotateX(10deg) scale(1.05);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-}
-
-.icon-card:hover .icon-circle {
-  transform: scale(1.15);
-  box-shadow: 0 0 20px var(--icon-color);
-}
-
-/* Scroll animation */
-.skills-section.animate .icon-card {
+.sk-visible .sk-card {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: var(--delay,0s);
 }
 
-/* ===================== RESPONSIVE ===================== */
-@media(max-width:900px){
-  .icon-card{width:130px;height:130px;}
-  .icon-card .icon-circle{width:70px;height:70px;font-size:2rem;}
-  .skills-text h2{font-size:2rem;}
+.sk-card:hover {
+  border-color: color-mix(in srgb, var(--c) 45%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--c) 20%, transparent),
+    0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Glow blob */
+.sk-card-glow {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--c) 18%, transparent) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sk-card:hover .sk-card-glow {
+  opacity: 1;
+}
+
+/* Icon */
+.sk-card-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--c) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 28%, transparent);
+  font-size: 26px;
+  color: var(--c);
+  transition: transform 0.3s var(--spring), box-shadow 0.3s ease;
+}
+
+.sk-card:hover .sk-card-icon {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--c) 30%, transparent);
+}
+
+/* Name */
+.sk-card-name {
+  position: relative;
+  z-index: 1;
+  font-family: "Syne", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--txt-1);
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+
+/* Chip — hidden by default, shown on hover */
+.sk-card-chip {
+  position: relative;
+  z-index: 1;
+  font-size: 10px !important;
+  padding: 2px 8px !important;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s var(--spring);
+}
+
+.sk-card:hover .sk-card-chip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ab2-chip shared — redeclared for self-containment */
+.ab2-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.1px;
+  transition: transform 0.2s var(--spring);
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.chip-blue   { background: rgba(56, 189, 248, 0.11);  color: #93d9fa; border: 1px solid rgba(56, 189, 248, 0.22);  }
+.chip-green  { background: rgba(74, 222, 128, 0.11);  color: #93e8b4; border: 1px solid rgba(74, 222, 128, 0.22);  }
+.chip-orange { background: rgba(251, 146, 60, 0.11);  color: #fec088; border: 1px solid rgba(251, 146, 60, 0.22);  }
+.chip-red    { background: rgba(251, 113, 133, 0.11); color: #fdaeba; border: 1px solid rgba(251, 113, 133, 0.22); }
+.chip-purple { background: rgba(184, 176, 255, 0.11); color: #cac4ff; border: 1px solid rgba(184, 176, 255, 0.22); }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .sk-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .sk-section {
+    padding: 72px 22px 64px;
+  }
+
+  .sk-title {
+    flex-direction: column;
+    gap: 4px;
+    letter-spacing: -2px;
+  }
+
+  .sk-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+
+  .sk-card {
+    padding: 22px 14px 18px;
+  }
+
+  .sk-card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
 }

@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Projects.css";
-import labProject from "../../assets//projects/lab-mangement.png";
-import TourProject from "../../assets//projects/tour-management.png";
-import MultiVendor from "../../assets//projects/multi-vendor-project.jpg";
-import WordPress from "../../assets//projects/wordpress.png";
-import plugin from "../../assets//projects/plugin.jpg";
-import plugintwo from "../../assets//projects/plugin-2.jpg";
+import labProject from "../../assets/projects/lab-mangement.png";
+import TourProject from "../../assets/projects/tour-management.png";
+import MultiVendor from "../../assets/projects/multi-vendor-project.jpg";
+import WordPress from "../../assets/projects/wordpress.png";
+import plugin from "../../assets/projects/plugin.jpg";
+import plugintwo from "../../assets/projects/plugin-2.jpg";
 
 const projects = [
   {
@@ -26,11 +26,11 @@ const projects = [
     tech: ["React", "Node.js", "MongoDB"],
   },
   {
-    title: "Smart Reading Progress – WordPress Reading Progress Plugin",
-    short: "Lightweight reading progress bar for WordPress",
+    title: "Smart Reading Progress",
+    short: "WordPress reading progress plugin",
     description: [
       "Developed a lightweight WordPress plugin that adds a smart reading progress indicator to improve user engagement and reading experience on blog posts and long-form content.",
-      "Built with clean PHP, JavaScript, and WordPress hooks, featuring customizable progress tracking, responsive behavior, and optimized frontend performance with minimal resource usage."
+      "Built with clean PHP, JavaScript, and WordPress hooks, featuring customizable progress tracking, responsive behavior, and optimized frontend performance with minimal resource usage.",
     ],
     image: plugin,
     tech: ["WordPress", "PHP", "JavaScript", "CSS", "Plugin Development"],
@@ -53,132 +53,175 @@ const projects = [
     tech: ["React", "Firebase"],
   },
   {
-    title: "Lab Management System – Enterprise SaaS",
-    short: "Healthcare workflow automation",
+    title: "Lab Management System",
+    short: "Enterprise SaaS · Healthcare",
     description: [
       "Developed dynamic, responsive frontend interfaces using React.js and Vue.js, improving user engagement metrics by ~40% and reducing bounce rates by ~35%.",
       "Built robust API-driven architectures with Node.js and Express.js, enabling seamless frontend-backend communication and real-time data synchronization serving 10,000+ monthly active users.",
-      "Implemented real-time analytics integration using Amplitude, providing actionable insights into user behavior patterns, feature adoption, and conversion funnels.",
-      "Designed scalable microservice-style backend components supporting long-term growth with 99.9% uptime and sub-200ms response times.",
       "Integrated Elasticsearch for advanced search functionality, reducing search query times by ~75% and improving user search satisfaction.",
-      "Developed comprehensive RESTful API endpoints handling authentication, data processing, and third party service integrations.",
-      "Collaborated in Agile teams, contributing to sprint planning, code reviews, and delivering features on schedule with consistent velocity."
     ],
     image: labProject,
     tech: ["Laravel", "MySQL", "Elasticsearch", "Stripe API", "REST APIs"],
   },
   {
-    title: "Tour Management System – Travel & Booking Platform",
-    short: "Tour booking & management solution",
+    title: "Tour Management System",
+    short: "Travel & booking platform",
     description: [
       "Built a complete tour booking and management platform enabling customers to browse, book, and manage travel packages.",
-      "Developed with Laravel backend and Vue.js SPA frontend for seamless user experience and efficient booking workflows."
+      "Developed with Laravel backend and Vue.js SPA frontend for seamless user experience and efficient booking workflows.",
     ],
     link: "https://github.com/zohaib9922/tour-booking-api",
     image: TourProject,
     tech: ["Laravel", "Vue.js", "MySQL", "Stripe", "RESTful APIs"],
   },
   {
-    title: "Enterprise E-Commerce Platform – Multi-Vendor Marketplace",
-    short: "Scalable multi-vendor e-commerce solution",
+    title: "Multi-Vendor Marketplace",
+    short: "Enterprise e-commerce",
     description: [
       "Developed a scalable e-commerce platform supporting multiple vendors with comprehensive order and inventory management.",
-      "Built with Laravel for backend scalability and integrated AWS S3 for efficient product image storage and retrieval."
+      "Built with Laravel for backend scalability and integrated AWS S3 for efficient product image storage and retrieval.",
     ],
     image: MultiVendor,
     tech: ["Laravel", "MySQL", "AWS S3", "Stripe", "PayPal", "REST APIs"],
   },
   {
-    title: "WordPress Multi-Site Network – Enterprise Content Management",
-    short: "Centralized WordPress multi-site setup",
+    title: "WordPress Multi-Site Network",
+    short: "Enterprise content management",
     description: [
       "Architected and deployed a WordPress multi-site network managing 20+ branded websites from a centralized dashboard.",
-      "Built with custom theme development and shared component library for consistent branding and performance optimization."
+      "Built with custom theme development and shared component library for consistent branding and performance optimization.",
     ],
     image: WordPress,
     tech: ["WordPress", "PHP", "MySQL", "Custom Theme Development"],
   },
   {
-    title: "Live Visitor Counter – Real-Time Website Analytics Plugin",
-    short: "Real-time visitor tracking for websites",
+    title: "Live Visitor Counter",
+    short: "Real-time analytics plugin",
     description: [
       "Developed a lightweight live visitor counter plugin that tracks and displays real-time website visitors, helping website owners monitor engagement and traffic activity instantly.",
-      "Built using PHP, JavaScript, and AJAX-based updates for smooth real-time counting, optimized performance, and seamless integration with WordPress websites and custom web applications."
+      "Built using PHP, JavaScript, and AJAX-based updates for smooth real-time counting, optimized performance, and seamless integration with WordPress websites.",
     ],
     image: plugintwo,
     tech: ["WordPress", "PHP", "JavaScript", "AJAX", "MySQL"],
     link: "https://github.com/zohaib9922/live-visitor-counter",
   },
   {
-    title: "Advanced Visitor Analytics – Real-Time Website Traffic Insights",
-    short: "Comprehensive visitor analytics and tracking system",
+    title: "Advanced Visitor Analytics",
+    short: "Traffic insights dashboard",
     description: [
       "Developed an advanced visitor analytics solution that tracks real-time website traffic, visitor behavior, page views, and engagement metrics through an intuitive analytics dashboard.",
-      "Built with PHP, JavaScript, AJAX, and MySQL, featuring live traffic monitoring, session tracking, device and browser analytics, and performance-optimized data processing for WordPress and custom web applications."
+      "Built with PHP, JavaScript, AJAX, and MySQL, featuring live traffic monitoring, session tracking, device and browser analytics.",
     ],
     image: plugin,
     tech: ["WordPress", "PHP", "JavaScript", "AJAX", "MySQL", "Analytics Dashboard"],
     link: "https://github.com/zohaib9922/advanced-visitor-analytics",
-  }
+  },
+];
+
+const chipColors = [
+  "chip-purple",
+  "chip-blue",
+  "chip-green",
+  "chip-orange",
+  "chip-red",
 ];
 
 const Projects = () => {
   const [activeProject, setActiveProject] = useState(null);
-  const projectsRef = useRef(null);
+  const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        } else {
-          setVisible(false);
-        }
-      },
-      { threshold: 0.2 }
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.1 }
     );
-
-    if (projectsRef.current) observer.observe(projectsRef.current);
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
-      if (projectsRef.current) observer.unobserve(projectsRef.current);
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
 
+  useEffect(() => {
+    if (activeProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [activeProject]);
+
   return (
     <section
-      className={`projects-section ${visible ? "animate" : ""}`}
+      className={`prj-section${visible ? " prj-visible" : ""}`}
       id="projects"
-      ref={projectsRef}
+      ref={sectionRef}
     >
-      <h2 className="projects-title">My Projects</h2>
-      <p className="projects-subtitle">
-        Selected work showcasing design, development, and problem solving
-      </p>
+      {/* ambient + grid handled via ::before/::after in CSS */}
 
-      <div className="projects-grid">
+      <div className="prj-header">
+        <div className="prj-eyebrow">
+          <span className="eyebrow-line" />
+          Selected Work
+        </div>
+        <h2 className="prj-title">
+          <span className="prj-t-solid">Things</span>
+          <span className="prj-t-stroke">I've</span>
+          <span className="prj-t-faint">built</span>
+        </h2>
+        <p className="prj-subtitle">
+          A curated set of projects spanning web apps, SaaS platforms, and WordPress ecosystems.
+        </p>
+      </div>
+
+      <div className="prj-grid">
         {projects.map((project, index) => (
           <div
-            className={`project-card ${index === 0 ? "large" : ""}`}
+            className="prj-card"
             key={index}
             onClick={() => setActiveProject(project)}
-            style={{ "--delay": `${index * 0.15}s` }}
+            style={{ "--i": index }}
           >
-            <img src={project.image} alt={project.title} />
-            <div className="project-overlay">
-              <h3>{project.title}</h3>
-              <p>{project.short}</p>
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link-btn"
-                >
-                  🚀 View Code <span style={{ fontSize: "16px" }}>→</span>
-                </a>
-              )}
+            <div className="prj-card-img-wrap">
+              <img src={project.image} alt={project.title} className="prj-card-img" />
+              <div className="prj-card-img-overlay" />
+            </div>
+
+            <div className="prj-card-body">
+              <p className="prj-card-short">{project.short}</p>
+              <h3 className="prj-card-title">{project.title}</h3>
+
+              <div className="prj-card-tech">
+                {project.tech.slice(0, 3).map((t, i) => (
+                  <span key={i} className={`ab2-chip ${chipColors[i % chipColors.length]}`}>{t}</span>
+                ))}
+                {project.tech.length > 3 && (
+                  <span className="ab2-chip chip-purple">+{project.tech.length - 3}</span>
+                )}
+              </div>
+
+              <div className="prj-card-footer">
+                <button className="prj-details-btn">
+                  View details
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="prj-gh-btn"
+                    onClick={(e) => e.stopPropagation()}
+                    aria-label="View on GitHub"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         ))}
@@ -186,44 +229,52 @@ const Projects = () => {
 
       {/* MODAL */}
       {activeProject && (
-        <div className="project-modal">
-          <div className="modal-content">
-            <button
-              className="close-btn"
-              onClick={() => setActiveProject(null)}
-            >
-              ✕
+        <div className="prj-modal-backdrop" onClick={() => setActiveProject(null)}>
+          <div className="prj-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="prj-modal-close" onClick={() => setActiveProject(null)} aria-label="Close">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
             </button>
 
-            <img src={activeProject.image} alt={activeProject.title} />
-
-            <h3>{activeProject.title}</h3>
-
-            <div className="project-description">
-              {Array.isArray(activeProject.description)
-                ? activeProject.description.map((d, i) => (
-                    <p key={i}>{d}</p>
-                  ))
-                : <p>{activeProject.description}</p>}
+            <div className="prj-modal-img-wrap">
+              <img src={activeProject.image} alt={activeProject.title} />
+              <div className="prj-modal-img-fade" />
             </div>
 
-            <div className="tech-stack">
-              {activeProject.tech.map((tech, i) => (
-                <span key={i}>{tech}</span>
-              ))}
+            <div className="prj-modal-body">
+              <p className="prj-modal-short">{activeProject.short}</p>
+              <h3 className="prj-modal-title">{activeProject.title}</h3>
+
+              <div className="prj-modal-desc">
+                {Array.isArray(activeProject.description)
+                  ? activeProject.description.map((d, i) => <p key={i}>{d}</p>)
+                  : <p>{activeProject.description}</p>}
+              </div>
+
+              <div className="prj-modal-tech">
+                {activeProject.tech.map((t, i) => (
+                  <span key={i} className={`ab2-chip ${chipColors[i % chipColors.length]}`}>{t}</span>
+                ))}
+              </div>
+
+              {activeProject.link && (
+                <a
+                  href={activeProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="prj-modal-link"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                  </svg>
+                  View on GitHub
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              )}
             </div>
-
-            {activeProject.link && (
-              <a
-                href={activeProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link-btn modal-btn"
-              >
-                🚀 View Code <span>→</span>
-              </a>
-            )}
-
           </div>
         </div>
       )}
