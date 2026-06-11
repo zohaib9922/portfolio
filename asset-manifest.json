@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.844b71a1.css",
-    "main.js": "/portfolio/static/js/main.1cbdd4a2.js",
+    "main.css": "/portfolio/static/css/main.6ef68b25.css",
+    "main.js": "/portfolio/static/js/main.961b884f.js",
     "static/js/453.b4d67a8b.chunk.js": "/portfolio/static/js/453.b4d67a8b.chunk.js",
     "static/media/tour-management.png": "/portfolio/static/media/tour-management.8fad07d8893ef671a9d3.png",
     "static/media/lab-mangement.png": "/portfolio/static/media/lab-mangement.044bccab27c84433c90c.png",
@@ -13,12 +13,12 @@
     "static/media/multi-vendor-project.jpg": "/portfolio/static/media/multi-vendor-project.b34e689305937b5e6b0e.jpg",
     "static/media/wordpress.png": "/portfolio/static/media/wordpress.da821a8dfa77f7178dbf.png",
     "index.html": "/portfolio/index.html",
-    "main.844b71a1.css.map": "/portfolio/static/css/main.844b71a1.css.map",
-    "main.1cbdd4a2.js.map": "/portfolio/static/js/main.1cbdd4a2.js.map",
+    "main.6ef68b25.css.map": "/portfolio/static/css/main.6ef68b25.css.map",
+    "main.961b884f.js.map": "/portfolio/static/js/main.961b884f.js.map",
     "453.b4d67a8b.chunk.js.map": "/portfolio/static/js/453.b4d67a8b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.844b71a1.css",
-    "static/js/main.1cbdd4a2.js"
+    "static/css/main.6ef68b25.css",
+    "static/js/main.961b884f.js"
   ]
 }
