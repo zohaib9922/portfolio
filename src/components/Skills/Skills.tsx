@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { FaAws, FaReact, FaVuejs, FaLaravel, FaPhp, FaCode, FaNodeJs, FaDocker } from "react-icons/fa";
 import { SiMysql, SiTypescript, SiTailwindcss, SiElasticsearch } from "react-icons/si";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import CursorGlow from "@/components/ui/CursorGlow";
 
 const SKILLS = [
   { icon: FaReact, name: "React.js", color: "#61dafb" },
@@ -26,8 +27,17 @@ export default function Skills() {
   return (
     <section id="skills" ref={sectionRef} className="relative overflow-hidden bg-bg px-6 py-24 sm:px-10 lg:py-32">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
-        <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-accent/5 blur-3xl" />
+        <motion.div
+          className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+          animate={{ x: [0, 26, 0], y: [0, 18, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-accent/5 blur-3xl"
+          animate={{ x: [0, -22, 0], y: [0, -18, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        />
+        <CursorGlow />
       </div>
 
       <div className="relative mx-auto max-w-6xl">

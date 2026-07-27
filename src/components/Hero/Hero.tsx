@@ -1,11 +1,14 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { FiSun, FiMoon, FiMenu, FiX, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FaReact, FaVuejs, FaLaravel, FaNodeJs, FaPhp, FaAws, FaDocker } from "react-icons/fa";
+import { SiMysql, SiTypescript, SiTailwindcss } from "react-icons/si";
 import { useTheme } from "@/hooks/useTheme";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import MagneticButton from "@/components/ui/MagneticButton";
 import AnimatedUnderlineLink from "@/components/ui/AnimatedUnderlineLink";
+import CircuitBackground from "./CircuitBackground";
 
 const Scene3D = lazy(() => import("./Scene3D"));
 
@@ -55,6 +58,19 @@ const socials = [
   { href: "https://www.linkedin.com/in/zohaibhasann", icon: FiLinkedin, label: "LinkedIn" },
   { href: "mailto:hzuhaib57@gmail.com", icon: FiMail, label: "Email" },
 ];
+
+const TECH_MARQUEE = [
+  { icon: FaReact, name: "React.js" },
+  { icon: FaVuejs, name: "Vue.js" },
+  { icon: FaLaravel, name: "Laravel" },
+  { icon: FaNodeJs, name: "Node.js" },
+  { icon: FaPhp, name: "PHP" },
+  { icon: SiTypescript, name: "TypeScript" },
+  { icon: SiTailwindcss, name: "Tailwind CSS" },
+  { icon: SiMysql, name: "MySQL" },
+  { icon: FaAws, name: "AWS" },
+  { icon: FaDocker, name: "Docker" },
+] as const;
 
 const wordStyles: Record<string, string> = {
   solid: "text-text-1",
@@ -164,7 +180,36 @@ export default function Hero() {
 
       {/* HERO BODY */}
       <section className="relative flex min-h-screen items-center pt-24">
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden [mask-image:radial-gradient(ellipse_75%_65%_at_38%_45%,transparent_22%,black_68%)]">
+          <div
+            className="absolute inset-0 opacity-25 [background-image:linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,black_40%,transparent_100%)]"
+          />
+
+          <CircuitBackground />
+
+          <motion.div
+            className="absolute -top-32 left-[8%] h-96 w-96 rounded-full bg-[#818cf8]/25 blur-3xl"
+            animate={{ x: [0, 26, 0], y: [0, 18, 0], scale: [1, 1.08, 1] }}
+            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute -top-24 right-[6%] h-80 w-80 rounded-full bg-[#5eead4]/20 blur-3xl"
+            animate={{ x: [0, -20, 0], y: [0, 24, 0], scale: [1, 1.1, 1] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          />
+          <motion.div
+            className="absolute bottom-0 left-[4%] h-80 w-80 rounded-full bg-[#f0abfc]/20 blur-3xl"
+            animate={{ x: [0, 24, 0], y: [0, -20, 0], scale: [1, 1.08, 1] }}
+            transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-[8%] h-96 w-96 rounded-full bg-[#fbbf24]/15 blur-3xl"
+            animate={{ x: [0, -22, 0], y: [0, -18, 0], scale: [1, 1.1, 1] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+        </div>
+
+        <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
           {/* LEFT */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -240,6 +285,19 @@ export default function Hero() {
                     >
                       <s.icon />
                     </a>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="mt-10 max-w-md overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+              >
+                <div className="flex w-max items-center gap-8 motion-safe:animate-marquee">
+                  {[...TECH_MARQUEE, ...TECH_MARQUEE].map((t, i) => (
+                    <div key={i} className="flex items-center gap-2 whitespace-nowrap text-xs font-medium text-text-3">
+                      <t.icon className="text-sm" /> {t.name}
+                    </div>
                   ))}
                 </div>
               </motion.div>

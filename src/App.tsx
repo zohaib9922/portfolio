@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { MotionConfig } from "framer-motion";
 import { ThemeProvider } from "./context/ThemeContext";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
@@ -12,18 +13,20 @@ const Footer = lazy(() => import("./components/Footer/Footer"));
 
 function App() {
   return (
-    <ThemeProvider>
-      <Hero />
-      <About />
-      <Skills />
-      <Suspense fallback={null}>
-        <Experience />
-        <Projects />
-        <Services />
-        <Contact />
-        <Footer />
-      </Suspense>
-    </ThemeProvider>
+    <MotionConfig reducedMotion="user">
+      <ThemeProvider>
+        <Hero />
+        <About />
+        <Skills />
+        <Suspense fallback={null}>
+          <Experience />
+          <Projects />
+          <Services />
+          <Contact />
+          <Footer />
+        </Suspense>
+      </ThemeProvider>
+    </MotionConfig>
   );
 }
 

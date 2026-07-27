@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiMail, FiPhone, FiGithub, FiLinkedin, FiCheck, FiAlertCircle, FiArrowUpRight } from "react-icons/fi";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import CursorGlow from "@/components/ui/CursorGlow";
 
 interface FormData {
   name: string;
@@ -68,7 +69,12 @@ export default function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden bg-bg px-6 py-24 sm:px-10 lg:py-32">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
+        <motion.div
+          className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+          animate={{ x: [0, -26, 0], y: [0, 20, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <CursorGlow />
       </div>
 
       <div className="relative mx-auto grid max-w-6xl gap-16 lg:grid-cols-2">

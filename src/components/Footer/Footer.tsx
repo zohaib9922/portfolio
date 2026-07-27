@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaGitlab } from "react-icons/fa";
 import { FiMail, FiPhone } from "react-icons/fi";
+import CursorGlow from "@/components/ui/CursorGlow";
 
 const NAV_ITEMS = ["Home", "About", "Skills", "Experience", "Projects", "Services", "Contact"];
 
@@ -14,7 +16,16 @@ export default function Footer() {
     <footer className="relative overflow-hidden border-t border-border bg-bg px-6 py-16 sm:px-10">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
-      <div className="mx-auto max-w-7xl">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-accent/5 blur-3xl"
+          animate={{ x: [0, 20, 0], y: [0, -16, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <CursorGlow />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>

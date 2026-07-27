@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import TechBadge from "@/components/ui/TechBadge";
+import CursorGlow from "@/components/ui/CursorGlow";
 import { EXPERIENCE } from "@/data/experience";
 
 export default function Experience() {
@@ -14,7 +15,16 @@ export default function Experience() {
 
   return (
     <section id="experience" className="relative overflow-hidden bg-bg px-6 py-24 sm:px-10 lg:py-32">
-      <div className="mx-auto max-w-4xl">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-32 left-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+          animate={{ x: [0, 24, 0], y: [0, 20, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <CursorGlow />
+      </div>
+
+      <div className="relative mx-auto max-w-4xl">
         <motion.div
           variants={fadeInUp}
           initial="hidden"

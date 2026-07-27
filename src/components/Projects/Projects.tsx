@@ -4,6 +4,7 @@ import { FiGithub, FiExternalLink, FiX, FiArrowRight } from "react-icons/fi";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import TechBadge from "@/components/ui/TechBadge";
 import TiltCard from "@/components/ui/TiltCard";
+import CursorGlow from "@/components/ui/CursorGlow";
 import { PROJECTS, type Project } from "@/data/projects";
 
 const featuredProject = PROJECTS.find((p) => p.featured);
@@ -23,7 +24,16 @@ export default function Projects() {
 
   return (
     <section id="projects" ref={sectionRef} className="relative overflow-hidden bg-bg px-6 py-24 sm:px-10 lg:py-32">
-      <div className="mx-auto max-w-7xl">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-24 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+          animate={{ x: [0, -28, 0], y: [0, 22, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 19, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <CursorGlow />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl">
         <motion.div variants={fadeInUp} initial="hidden" animate={inView ? "visible" : "hidden"} className="mb-14">
           <div className="mb-4 flex items-center gap-3 text-sm font-medium text-text-2">
             <span className="h-px w-8 bg-accent" />

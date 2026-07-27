@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { FiCheck } from "react-icons/fi";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import TiltCard from "@/components/ui/TiltCard";
+import CursorGlow from "@/components/ui/CursorGlow";
 import { SERVICES } from "@/data/services";
 
 export default function Services() {
@@ -12,7 +13,12 @@ export default function Services() {
   return (
     <section id="services" ref={sectionRef} className="relative overflow-hidden bg-bg px-6 py-24 sm:px-10 lg:py-32">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/3 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-accent/10 blur-3xl" />
+        <motion.div
+          className="absolute left-1/3 top-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+          animate={{ x: ["-50%", "-42%", "-50%"], y: [0, 22, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <CursorGlow />
       </div>
 
       <div className="relative mx-auto max-w-6xl">

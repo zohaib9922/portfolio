@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { FaReact, FaLaravel, FaJs, FaAws, FaVuejs, FaNodeJs } from "react-icons/fa";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import TechBadge from "@/components/ui/TechBadge";
+import CursorGlow from "@/components/ui/CursorGlow";
 
 const MILESTONES = [
   { year: "2017", title: "Started Journey", desc: "Began full-stack development with JavaScript & PHP foundations." },
@@ -52,8 +53,17 @@ export default function About() {
   return (
     <section id="about" ref={sectionRef} className="relative overflow-hidden bg-bg px-6 py-24 sm:px-10 lg:py-32">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-accent/5 blur-3xl" />
+        <motion.div
+          className="absolute -top-40 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+          animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-accent/5 blur-3xl"
+          animate={{ x: [0, -24, 0], y: [0, 24, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <CursorGlow />
       </div>
 
       <div className="relative mx-auto max-w-7xl">
