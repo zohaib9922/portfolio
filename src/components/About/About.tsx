@@ -25,7 +25,7 @@ const TERM_LINES = [
   "$ whoami",
   "> Zohaib — Full Stack Developer",
   "$ experience --years",
-  "> 7+ years building at scale",
+  "> 5+ years building at scale",
   "$ projects --count",
   "> 50+ shipped · 200+ happy clients",
   "$ status",
@@ -33,7 +33,7 @@ const TERM_LINES = [
 ] as const;
 
 const STATS = [
-  { num: "7+", label: "Years Experience" },
+  { num: "5+", label: "Years Experience" },
   { num: "50+", label: "Projects Shipped" },
   { num: "200+", label: "Happy Clients" },
   { num: "∞", label: "Lines of Code" },

@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { MotionConfig } from "framer-motion";
 import { ThemeProvider } from "./context/ThemeContext";
 import Hero from "./components/Hero/Hero";
+import { useLenis } from "./components/Hero/scroll/useLenis";
 import About from "./components/About/About";
 import Skills from "./components/Skills/Skills";
 
@@ -12,6 +13,8 @@ const Contact = lazy(() => import("./components/Contact/Contact"));
 const Footer = lazy(() => import("./components/Footer/Footer"));
 
 function App() {
+  useLenis();
+
   return (
     <MotionConfig reducedMotion="user">
       <ThemeProvider>
