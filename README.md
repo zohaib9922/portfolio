@@ -36,7 +36,7 @@
 
 ## 🚀 Getting Started
 
-\`\`\`bash
+```bash
 # clone the repo
 git clone https://github.com/zohaib9922/-portfolio.git
 cd -portfolio
@@ -46,7 +46,7 @@ npm install
 
 # start the dev server
 npm run dev
-\`\`\`
+```
 
 Open [http://localhost:5173](http://localhost:5173) to view it locally.
 
@@ -54,26 +54,26 @@ Open [http://localhost:5173](http://localhost:5173) to view it locally.
 
 The contact form uses [EmailJS](https://www.emailjs.com/). Copy `.env.example` to `.env` and fill in your own credentials:
 
-\`\`\`bash
+```bash
 cp .env.example .env
-\`\`\`
+```
 
-\`\`\`
+```
 VITE_EMAILJS_SERVICE_ID=
 VITE_EMAILJS_TEMPLATE_ID=
 VITE_EMAILJS_PUBLIC_KEY=
-\`\`\`
+```
 
 ### Build & Deploy
 
-\`\`\`bash
+```bash
 npm run build     # type-check + production build to /dist
 npm run deploy     # build and publish to GitHub Pages
-\`\`\`
+```
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 src/
 ├── components/
 │   ├── Hero/            # 3D scroll scene (objects/, scroll/) + hero UI
@@ -88,7 +88,7 @@ src/
 ├── context/              # ThemeContext
 ├── data/                 # project/content data
 └── lib/                  # shared animation variants & helpers
-\`\`\`
+```
 
 ## 🤝 Contributing
 
