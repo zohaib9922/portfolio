@@ -4,7 +4,6 @@ import { FiSun, FiMoon, FiMenu, FiX, FiGithub, FiLinkedin, FiMail } from "react-
 import { FaReact, FaVuejs, FaLaravel, FaNodeJs, FaPhp, FaAws, FaDocker } from "react-icons/fa";
 import { SiMysql, SiTypescript, SiTailwindcss } from "react-icons/si";
 import { useTheme } from "@/hooks/useTheme";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import MagneticButton from "@/components/ui/MagneticButton";
 import AnimatedUnderlineLink from "@/components/ui/AnimatedUnderlineLink";
 import { HeroScene } from "./objects/HeroScene";
@@ -61,7 +60,6 @@ export default function Hero() {
   const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [overHero, setOverHero] = useState(true);
-  const isLargeScreen = useMediaQuery("(min-width: 1024px)");
   const shouldReduceMotion = useReducedMotion();
   const tier = useResponsiveTier();
 
@@ -233,9 +231,11 @@ export default function Hero() {
         ref={sectionRef as never}
         className="relative flex h-screen items-center overflow-hidden bg-[#06070a] pt-24 text-white"
       >
-        {/* 3D scene — camera flythrough driven by scroll progress */}
+        {/* 3D scene — camera flythrough driven by scroll progress. Renders
+            on every screen size; <HeroScene>'s `tier` prop scales the scene
+            down (fewer particles, simpler geometry) on mobile/tablet. */}
         <div className="absolute inset-0 z-0">
-          {isLargeScreen && !shouldReduceMotion && <HeroScene tier={tier} accentColor={accentColor} />}
+          {!shouldReduceMotion && <HeroScene tier={tier} accentColor={accentColor} />}
         </div>
 
         <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden [mask-image:radial-gradient(ellipse_75%_65%_at_38%_45%,transparent_22%,black_68%)]">
